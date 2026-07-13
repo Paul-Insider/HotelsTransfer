@@ -1,0 +1,671 @@
+---
+import { destinations } from "../data/destinations";
+---
+
+<section class="destinations" aria-labelledby="destinations-title">
+  <div class="sectionHeader">
+    <div class="sectionIntro">
+      <p class="eyebrow">Curated destinations</p>
+
+      <h2 id="destinations-title">
+        Exceptional arrivals,
+        <span>wherever the world takes you.</span>
+      </h2>
+
+      <p class="sectionDescription">
+        Compare selected transfer partners across the world’s most requested
+        destinations.
+      </p>
+    </div>
+
+    <a class="viewAll" href="/destinations">
+      View all destinations
+
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M7 17 17 7M8 7h9v9"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </div>
+
+  <div class="destinationGrid">
+    {
+      destinations.map((destination) => (
+        <a
+          class="destinationCard"
+          href={`/destinations/${destination.slug}`}
+          aria-label={`Compare airport transfers in ${destination.city}`}
+        >
+          <div class="media">
+            <div class="fallbackCode" aria-hidden="true">
+              {destination.code}
+            </div>
+
+            <img
+              src={destination.image}
+              alt={`${destination.city}, ${destination.country}`}
+              width="900"
+              height="650"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              sizes="
+                (max-width: 620px) calc(100vw - 32px),
+                (max-width: 900px) 50vw,
+                (max-width: 1180px) 33vw,
+                25vw
+              "
+            />
+
+            <div class="mediaShade"></div>
+
+            <div class="mediaTop">
+              <span class="airportCode">{destination.code}</span>
+
+              <span class="curatedBadge">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="m12 3 2.2 2.3 3.2-.3.7 3.1 2.8 1.7-1.4 2.9 1.4 2.9-2.8 1.7-.7 3.1-3.2-.3L12 22l-2.2-2.3-3.2.3-.7-3.1-2.8-1.7 1.4-2.9-1.4-2.9 2.8-1.7.7-3.1 3.2.3L12 3Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="m9.3 12 1.8 1.8 3.8-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                Curated
+              </span>
+            </div>
+
+            <div class="mediaTitle">
+              <p>{destination.country}</p>
+              <h3>{destination.city}</h3>
+            </div>
+          </div>
+
+          <div class="cardContent">
+            <div class="trustRow">
+              <div class="rating">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"
+                    fill="currentColor"
+                  />
+                </svg>
+
+                <strong>{destination.rating.toFixed(1)}</strong>
+                <span>Guest rating</span>
+              </div>
+
+              <div class="partners">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 3 5.5 5.6v5.2c0 4.3 2.7 8.1 6.5 9.4 3.8-1.3 6.5-5.1 6.5-9.4V5.6L12 3Z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="m9.2 11.8 1.8 1.8 3.8-4"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                <strong>{destination.partners}</strong>
+                <span>Verified partners</span>
+              </div>
+            </div>
+
+            <div class="services">
+              {
+                destination.services.map((service) => (
+                  <span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="m7.5 12.2 3 3 6-6.4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.9"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                    {service}
+                  </span>
+                ))
+              }
+            </div>
+
+            <div class="cardFooter">
+              <div class="price">
+                <span>From</span>
+
+                <strong>
+                  ${destination.price}
+                  <small>{destination.currency}</small>
+                </strong>
+              </div>
+
+              <span class="compare">
+                Compare
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="m9 18 6-6-6-6"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .destinations {
+    max-width: 1400px;
+    margin: 82px auto 112px;
+    padding: 0 30px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 34px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .sectionIntro {
+    max-width: 760px;
+  }
+
+  .eyebrow {
+    margin: 0 0 13px;
+    color: var(--blue);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0;
+    color: #101827;
+    font-size: clamp(38px, 4.25vw, 58px);
+    font-weight: 750;
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+    text-wrap: balance;
+  }
+
+  h2 span {
+    display: block;
+    color: #687386;
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.045em;
+  }
+
+  .sectionDescription {
+    max-width: 590px;
+    margin: 19px 0 0;
+    color: #6b7688;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .viewAll {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 4px;
+    color: #123f79;
+    border-bottom: 1px solid rgba(18, 63, 121, 0.22);
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .viewAll svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .destinationGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .destinationCard {
+    min-width: 0;
+    display: block;
+    overflow: hidden;
+    color: #111b2d;
+    border: 1px solid rgba(15, 23, 42, 0.075);
+    border-radius: 23px;
+    background: #fff;
+    box-shadow:
+      0 2px 4px rgba(15, 23, 42, 0.02),
+      0 16px 42px rgba(15, 23, 42, 0.055);
+    content-visibility: auto;
+    contain-intrinsic-size: 440px;
+    transition:
+      transform 260ms cubic-bezier(0.2, 0.75, 0.25, 1),
+      border-color 260ms ease,
+      box-shadow 260ms ease;
+  }
+
+  .destinationCard:hover {
+    transform: translateY(-6px);
+    border-color: rgba(29, 75, 134, 0.16);
+    box-shadow:
+      0 2px 4px rgba(15, 23, 42, 0.025),
+      0 30px 70px rgba(15, 23, 42, 0.13);
+  }
+
+  .media {
+    position: relative;
+    aspect-ratio: 1.35 / 1;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 22% 15%, #f4eee4, transparent 45%),
+      linear-gradient(145deg, #f3f6f8, #e8edf1);
+  }
+
+  .fallbackCode {
+    position: absolute;
+    right: -10px;
+    bottom: -24px;
+    color: rgba(19, 36, 61, 0.055);
+    font-size: 88px;
+    font-weight: 900;
+    letter-spacing: -0.08em;
+  }
+
+  .media img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 700ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  }
+
+  .destinationCard:hover .media img {
+    transform: scale(1.035);
+  }
+
+  .mediaShade {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 14, 24, 0.14) 0%,
+        transparent 42%,
+        rgba(7, 14, 24, 0.7) 100%
+      );
+  }
+
+  .mediaTop {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .airportCode,
+  .curatedBadge {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 8px 20px rgba(5, 16, 29, 0.13);
+    backdrop-filter: blur(12px);
+  }
+
+  .airportCode {
+    padding: 0 10px;
+    color: #162944;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.09em;
+  }
+
+  .curatedBadge {
+    gap: 5px;
+    padding: 0 9px;
+    color: #263b55;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .curatedBadge svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .mediaTitle {
+    position: absolute;
+    left: 17px;
+    right: 17px;
+    bottom: 17px;
+    z-index: 3;
+    color: white;
+  }
+
+  .mediaTitle p {
+    margin: 0 0 5px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.88;
+  }
+
+  .mediaTitle h3 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 760;
+    line-height: 1;
+    letter-spacing: -0.055em;
+    text-shadow: 0 3px 18px rgba(0, 0, 0, 0.34);
+  }
+
+  .cardContent {
+    padding: 16px 18px 17px;
+  }
+
+  .trustRow {
+    display: grid;
+    grid-template-columns: 0.9fr 1.25fr;
+    gap: 14px;
+  }
+
+  .rating,
+  .partners {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    align-items: center;
+    column-gap: 5px;
+  }
+
+  .rating svg,
+  .partners svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .rating svg {
+    color: #b58a42;
+  }
+
+  .partners svg {
+    color: #315b8c;
+  }
+
+  .rating strong,
+  .partners strong {
+    color: #172238;
+    font-size: 12px;
+    font-weight: 850;
+  }
+
+  .rating span,
+  .partners span {
+    grid-column: 1 / -1;
+    margin-top: 3px;
+    color: #7a8494;
+    font-size: 8px;
+    font-weight: 650;
+    white-space: nowrap;
+  }
+
+  .services {
+    margin-top: 13px;
+    padding: 11px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 11px;
+    border-top: 1px solid rgba(15, 23, 42, 0.06);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  }
+
+  .services span {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: #596575;
+    font-size: 8px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .services svg {
+    width: 12px;
+    height: 12px;
+    color: #315b8c;
+  }
+
+  .cardFooter {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+
+  .price > span {
+    color: #7b8493;
+    font-size: 8px;
+    font-weight: 750;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  .price strong {
+    color: #101827;
+    font-size: 19px;
+    font-weight: 820;
+    letter-spacing: -0.045em;
+  }
+
+  .price small {
+    margin-left: 2px;
+    color: #7b8493;
+    font-size: 8px;
+    font-weight: 800;
+  }
+
+  .compare {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 12px;
+    color: white;
+    border-radius: 999px;
+    background: #123f79;
+    font-size: 9px;
+    font-weight: 850;
+    white-space: nowrap;
+    transition:
+      background 200ms ease,
+      transform 200ms ease;
+  }
+
+  .compare svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .destinationCard:hover .compare {
+    background: #0d315f;
+    transform: translateX(2px);
+  }
+
+  @media (max-width: 1180px) {
+    .destinationGrid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .destinations {
+      margin-top: 68px;
+      padding-inline: 20px;
+    }
+
+    .sectionHeader {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .destinationGrid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .media {
+      aspect-ratio: 1.4 / 1;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .destinations {
+      margin: 58px auto 80px;
+      padding-inline: 16px;
+    }
+
+    .sectionHeader {
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 11vw, 47px);
+    }
+
+    .sectionDescription {
+      margin-top: 17px;
+      font-size: 14px;
+    }
+
+    .destinationGrid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .destinationCard {
+      border-radius: 22px;
+    }
+
+    .media {
+      aspect-ratio: 1.36 / 1;
+    }
+
+    .mediaTitle h3 {
+      font-size: 31px;
+    }
+
+    .cardContent {
+      padding: 17px 18px 18px;
+    }
+
+    .trustRow {
+      grid-template-columns: 0.85fr 1.3fr;
+    }
+
+    .rating strong,
+    .partners strong {
+      font-size: 13px;
+    }
+
+    .rating span,
+    .partners span {
+      font-size: 9px;
+    }
+
+    .services span {
+      font-size: 9px;
+    }
+
+    .price strong {
+      font-size: 21px;
+    }
+
+    .compare {
+      min-height: 36px;
+      padding-inline: 13px;
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .cardFooter {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .destinationCard,
+    .media img,
+    .compare {
+      transition: none;
+    }
+
+    .destinationCard:hover,
+    .destinationCard:hover .media img,
+    .destinationCard:hover .compare {
+      transform: none;
+    }
+  }
+</style>
