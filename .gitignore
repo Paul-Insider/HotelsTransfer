@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Local design backups
+*.bak
+*.backup-*
+*.backup-before-*
+*.before-*.astro.bak
