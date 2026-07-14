@@ -107,8 +107,10 @@ import { destinations } from "../data/destinations";
                   />
                 </svg>
 
-                <strong>{destination.rating.toFixed(1)}</strong>
-                <span>Excellent guest rating</span>
+                <div>
+                  <strong>{destination.rating.toFixed(1)}</strong>
+                  <span>Excellent guest rating</span>
+                </div>
               </div>
 
               <div class="confidenceItem">
@@ -130,8 +132,10 @@ import { destinations } from "../data/destinations";
                   />
                 </svg>
 
-                <strong>{destination.partners}</strong>
-                <span>Verified transfer partners</span>
+                <div>
+                  <strong>{destination.partners}</strong>
+                  <span>Verified transfer partners</span>
+                </div>
               </div>
             </div>
 
@@ -295,7 +299,7 @@ import { destinations } from "../data/destinations";
 
   .media {
     position: relative;
-    aspect-ratio: 1.18 / 1;
+    aspect-ratio: 1.12 / 1;
     overflow: hidden;
     background:
       radial-gradient(circle at 20% 15%, #f3ede3, transparent 46%),
@@ -508,7 +512,7 @@ import { destinations } from "../data/destinations";
 
   .price strong {
     color: #101827;
-    font-size: 26px;
+    font-size: 29px;
     font-weight: 820;
     line-height: 1;
     letter-spacing: -0.045em;
@@ -517,7 +521,7 @@ import { destinations } from "../data/destinations";
   .price small {
     margin-left: 3px;
     color: #7b8493;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.04em;
   }
@@ -792,54 +796,4 @@ import { destinations } from "../data/destinations";
       transform: none;
     }
   }
-
-  /* Confidence layout correction */
-  .confidence {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    gap: 14px;
-  }
-
-  .confidence .confidenceItem {
-    min-width: 0;
-    display: grid;
-    grid-template-columns: 24px minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    column-gap: 9px;
-    row-gap: 9px;
-    align-items: center;
-  }
-
-  .confidence .confidenceItem > svg {
-    grid-column: 1;
-    grid-row: 1;
-    width: 16px;
-    height: 16px;
-    margin: 0;
-    justify-self: center;
-  }
-
-  .confidence .confidenceItem > strong {
-    grid-column: 2;
-    grid-row: 1;
-    display: block;
-    color: #111b2d;
-    font-size: 17px;
-    font-weight: 850;
-    line-height: 1;
-  }
-
-  .confidence .confidenceItem > span {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    display: block;
-    margin: 0;
-    color: #778294;
-    font-size: 10px;
-    font-weight: 650;
-    line-height: 1.3;
-    white-space: nowrap;
-  }
-
 </style>
