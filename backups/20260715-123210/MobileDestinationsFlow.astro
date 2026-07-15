@@ -1,0 +1,888 @@
+---
+import { destinations } from "../data/destinations";
+
+const firstGroup = destinations.slice(0, 8);
+const secondGroup = destinations.slice(8, 14);
+const thirdGroup = destinations.slice(14, 20);
+---
+
+<section class="mobileDestinationFlow" aria-label="Popular destinations">
+  <header class="mobileSectionHeader">
+    <p class="eyebrow">Curated destinations</p>
+
+    <h2>
+      Exceptional arrivals,
+      <em>wherever the world takes you.</em>
+    </h2>
+
+    <p class="intro">
+      Compare private transfer partners across leading destinations worldwide.
+    </p>
+
+    <a href="/destinations" class="allDestinations">
+      View all destinations
+      <span aria-hidden="true">↗</span>
+    </a>
+  </header>
+
+  <div class="mobileCards">
+    {
+      firstGroup.map((destination) => (
+        <article class="mobileDestinationCard">
+          <a
+            class="mobileMedia"
+            href={`/destinations/${destination.slug}`}
+            aria-label={`View private transfers in ${destination.city}`}
+          >
+            <img
+              src={destination.image}
+              alt={`Private airport transfer in ${destination.city}`}
+              loading="lazy"
+              decoding="async"
+            />
+
+            <div class="mobileShade"></div>
+
+            <span class="mobileAirportCode">{destination.code}</span>
+
+            <div class="mobileCity">
+              <p>{destination.country}</p>
+              <h3>{destination.city}</h3>
+            </div>
+          </a>
+
+          <div class="mobileCardBody">
+            <div class="mobilePartners">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3 5.5 5.6v5.2c0 4.3 2.7 8.1 6.5 9.4 3.8-1.3 6.5-5.1 6.5-9.4V5.6L12 3Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="m9.2 11.8 1.8 1.8 3.8-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <strong>{destination.partners}</strong>
+              <span>Verified partners</span>
+            </div>
+
+            <div class="mobileServices">
+              {
+                destination.services.map((service) => (
+                  <span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="m7.5 12.2 3 3 6-6.4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.9"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                    {service}
+                  </span>
+                ))
+              }
+            </div>
+
+            <footer class="mobileCardFooter">
+              <div class="mobilePrice">
+                <small>Transfers from</small>
+
+                <div>
+                  <strong>${destination.price}</strong>
+                  <span>{destination.currency}</span>
+                </div>
+              </div>
+
+              <a
+                class="mobileView"
+                href={`/destinations/${destination.slug}`}
+                aria-label={`View transfers in ${destination.city}`}
+              >
+                View transfers
+                <span aria-hidden="true">→</span>
+              </a>
+            </footer>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="mobileOriginalSection mobileConfidenceSection">
+    <slot name="confidence" />
+  </div>
+
+  <div class="mobileCards">
+    {
+      secondGroup.map((destination) => (
+        <article class="mobileDestinationCard">
+          <a
+            class="mobileMedia"
+            href={`/destinations/${destination.slug}`}
+            aria-label={`View private transfers in ${destination.city}`}
+          >
+            <img
+              src={destination.image}
+              alt={`Private airport transfer in ${destination.city}`}
+              loading="lazy"
+              decoding="async"
+            />
+
+            <div class="mobileShade"></div>
+
+            <span class="mobileAirportCode">{destination.code}</span>
+
+            <div class="mobileCity">
+              <p>{destination.country}</p>
+              <h3>{destination.city}</h3>
+            </div>
+          </a>
+
+          <div class="mobileCardBody">
+            <div class="mobilePartners">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3 5.5 5.6v5.2c0 4.3 2.7 8.1 6.5 9.4 3.8-1.3 6.5-5.1 6.5-9.4V5.6L12 3Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="m9.2 11.8 1.8 1.8 3.8-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <strong>{destination.partners}</strong>
+              <span>Verified partners</span>
+            </div>
+
+            <div class="mobileServices">
+              {
+                destination.services.map((service) => (
+                  <span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="m7.5 12.2 3 3 6-6.4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.9"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                    {service}
+                  </span>
+                ))
+              }
+            </div>
+
+            <footer class="mobileCardFooter">
+              <div class="mobilePrice">
+                <small>Transfers from</small>
+
+                <div>
+                  <strong>${destination.price}</strong>
+                  <span>{destination.currency}</span>
+                </div>
+              </div>
+
+              <a
+                class="mobileView"
+                href={`/destinations/${destination.slug}`}
+                aria-label={`View transfers in ${destination.city}`}
+              >
+                View transfers
+                <span aria-hidden="true">→</span>
+              </a>
+            </footer>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <aside class="mobileInterlude mobileInterludeDark">
+    <p class="eyebrow">Confidence begins before landing</p>
+
+    <h2>Everything essential, arranged before arrival.</h2>
+
+    <p>
+      Know who is meeting you, understand what you will pay and choose the
+      vehicle that fits your journey.
+    </p>
+
+    <a href="/how-it-works">
+      How HotelsTransfer works
+      <span aria-hidden="true">→</span>
+    </a>
+  </aside>
+
+  <div class="mobileOriginalSection mobileHowItWorksSection">
+    <slot name="how-it-works" />
+  </div>
+
+  <div class="mobileCards">
+    {
+      thirdGroup.map((destination) => (
+        <article class="mobileDestinationCard">
+          <a
+            class="mobileMedia"
+            href={`/destinations/${destination.slug}`}
+            aria-label={`View private transfers in ${destination.city}`}
+          >
+            <img
+              src={destination.image}
+              alt={`Private airport transfer in ${destination.city}`}
+              loading="lazy"
+              decoding="async"
+            />
+
+            <div class="mobileShade"></div>
+
+            <span class="mobileAirportCode">{destination.code}</span>
+
+            <div class="mobileCity">
+              <p>{destination.country}</p>
+              <h3>{destination.city}</h3>
+            </div>
+          </a>
+
+          <div class="mobileCardBody">
+            <div class="mobilePartners">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 3 5.5 5.6v5.2c0 4.3 2.7 8.1 6.5 9.4 3.8-1.3 6.5-5.1 6.5-9.4V5.6L12 3Z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="m9.2 11.8 1.8 1.8 3.8-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.7"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+
+              <strong>{destination.partners}</strong>
+              <span>Verified partners</span>
+            </div>
+
+            <div class="mobileServices">
+              {
+                destination.services.map((service) => (
+                  <span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path
+                        d="m7.5 12.2 3 3 6-6.4"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.9"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+
+                    {service}
+                  </span>
+                ))
+              }
+            </div>
+
+            <footer class="mobileCardFooter">
+              <div class="mobilePrice">
+                <small>Transfers from</small>
+
+                <div>
+                  <strong>${destination.price}</strong>
+                  <span>{destination.currency}</span>
+                </div>
+              </div>
+
+              <a
+                class="mobileView"
+                href={`/destinations/${destination.slug}`}
+                aria-label={`View transfers in ${destination.city}`}
+              >
+                View transfers
+                <span aria-hidden="true">→</span>
+              </a>
+            </footer>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+
+  <footer class="mobileFinalCta">
+    <p class="eyebrow">Ready when you are</p>
+    <h2>Find the right transfer for your next arrival.</h2>
+
+    <a href="#transfer-search">
+      Search transfers
+      <span aria-hidden="true">→</span>
+    </a>
+  </footer>
+</section>
+
+<style>
+  .mobileDestinationFlow {
+    display: contents;
+  }
+
+  .mobileSectionHeader,
+  .mobileCards,
+  .mobileInterlude,
+  .mobileFinalCta {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobileDestinationFlow {
+      display: block;
+      padding: 72px 18px 84px;
+      background: #f5f7fa;
+      color: #101827;
+    }
+
+    .mobileSectionHeader {
+      display: block;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #1f5795;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .mobileSectionHeader h2,
+    .mobileInterlude h2,
+    .mobileFinalCta h2 {
+      margin: 0;
+      color: #0e1728;
+      font-size: clamp(38px, 11vw, 48px);
+      font-weight: 820;
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .mobileSectionHeader h2 em {
+      display: block;
+      color: #778194;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    .intro {
+      max-width: 90%;
+      margin: 30px 0 20px;
+      color: #687489;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .allDestinations {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #aab7c8;
+      color: #174575;
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .mobileCards {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .mobileDestinationCard {
+      overflow: hidden;
+      border: 1px solid rgba(18, 38, 64, 0.09);
+      border-radius: 26px;
+      background: #fff;
+      box-shadow: 0 18px 42px rgba(16, 29, 48, 0.09);
+    }
+
+    .mobileMedia {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mobileMedia img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .mobileShade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(5, 13, 24, 0.02) 38%,
+          rgba(5, 13, 24, 0.72) 100%
+        );
+    }
+
+    .mobileAirportCode {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 13px;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #152b47;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      box-shadow: 0 8px 20px rgba(5, 16, 29, 0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .mobileCity {
+      position: absolute;
+      right: 20px;
+      bottom: 19px;
+      left: 20px;
+      color: #fff;
+    }
+
+    .mobileCity p {
+      margin: 0 0 5px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .mobileCity h3 {
+      margin: 0;
+      font-size: clamp(38px, 11vw, 48px);
+      font-weight: 820;
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+      text-shadow: 0 3px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .mobileCardBody {
+      padding: 20px;
+    }
+
+    .mobilePartners {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid #e2e7ee;
+      white-space: nowrap;
+    }
+
+    .mobilePartners > svg {
+      width: 17px;
+      height: 17px;
+      color: #28629d;
+      flex: 0 0 auto;
+    }
+
+    .mobilePartners strong {
+      color: #101827;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .mobilePartners span {
+      color: #768196;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .mobileServices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      padding: 18px 0;
+      border-bottom: 1px solid #e2e7ee;
+    }
+
+    .mobileServices > span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 34px;
+      padding: 0 13px;
+      border: 1px solid #d7dfe9;
+      border-radius: 999px;
+      background: #f7f9fc;
+      color: #41536c;
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .mobileServices svg {
+      width: 13px;
+      height: 13px;
+      color: #1f659f;
+    }
+
+    .mobileCardFooter {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 16px;
+      padding-top: 18px;
+    }
+
+    .mobilePrice small {
+      display: block;
+      margin-bottom: 5px;
+      color: #798599;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .mobilePrice > div {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+
+    .mobilePrice strong {
+      color: #0e1728;
+      font-size: 34px;
+      font-weight: 880;
+      line-height: 1;
+      letter-spacing: -0.055em;
+    }
+
+    .mobilePrice span {
+      color: #7b8699;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .mobileView {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 44px;
+      padding: 0 7px 0 16px;
+      border: 1px solid #cfdae7;
+      border-radius: 999px;
+      color: #183b64;
+      font-size: 13px;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 8px 20px rgba(22, 52, 88, 0.06);
+    }
+
+    .mobileView span {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #17477d;
+      color: #fff;
+      font-size: 17px;
+    }
+
+    .mobileInterlude,
+    .mobileFinalCta {
+      display: block;
+      margin: 72px 0;
+      padding: 34px 26px;
+      border: 1px solid rgba(20, 42, 68, 0.1);
+      border-radius: 28px;
+      background: #fff;
+      box-shadow: 0 18px 44px rgba(16, 29, 48, 0.07);
+    }
+
+    .mobileInterlude h2,
+    .mobileFinalCta h2 {
+      font-size: 36px;
+      line-height: 1.02;
+    }
+
+    .mobileInterludePoints {
+      display: grid;
+      gap: 21px;
+      margin-top: 28px;
+    }
+
+    .mobileInterludePoints div {
+      display: grid;
+      gap: 6px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e7ee;
+    }
+
+    .mobileInterludePoints strong {
+      font-size: 18px;
+    }
+
+    .mobileInterludePoints span,
+    .mobileInterlude > p:not(.eyebrow) {
+      color: #6c788b;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .mobileInterludeDark {
+      padding: 40px;
+      background: #101b2c;
+      color: #fff;
+    }
+
+    .mobileInterludeDark h2 {
+      color: #fff;
+    }
+
+    .mobileInterludeDark .eyebrow {
+      color: #d2ae61;
+    }
+
+    .mobileInterludeDark > p:not(.eyebrow) {
+      max-width: 90%;
+      margin: 30px 0;
+      color: #c2cbd7;
+    }
+
+    .mobileInterludeDark a,
+    .mobileFinalCta a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      width: 100%;
+      min-height: 52px;
+      padding: 0 9px 0 18px;
+      border-radius: 999px;
+      background: #fff;
+      color: #163c69;
+      font-size: 14px;
+      font-weight: 850;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    .mobileInterludeDark a span,
+    .mobileFinalCta a span {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #17477d;
+      color: #fff;
+    }
+
+    .mobileInterludeDark a {
+      width: calc(100% + 32px);
+      margin-left: -16px;
+    }
+
+    .mobileFinalCta {
+      margin-bottom: 0;
+      background: #eef3f8;
+    }
+
+    .mobileFinalCta h2 {
+      margin-bottom: 30px;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .mobileDestinationFlow {
+      padding-inline: 14px;
+    }
+
+    .mobileCardBody {
+      padding: 17px;
+    }
+
+    .mobileCity h3 {
+      font-size: 36px;
+    }
+
+    .mobilePartners span {
+      font-size: 12px;
+    }
+
+    .mobileView {
+      gap: 8px;
+      padding-left: 12px;
+      font-size: 12px;
+    }
+
+    .mobilePrice strong {
+      font-size: 31px;
+    }
+  }
+
+  /* Mobile card 55-45 visual balance */
+  @media (max-width: 768px) {
+    /*
+     * Une image 4:3 est sensiblement plus haute que l'ancien 16:10.
+     * Avec le contenu compact ci-dessous, la photo devient dominante.
+     */
+    .mobileMedia {
+      aspect-ratio: 4 / 3;
+    }
+
+    .mobileCardBody {
+      padding: 17px 18px 18px;
+    }
+
+    .mobilePartners {
+      gap: 7px;
+      padding-bottom: 13px;
+    }
+
+    .mobilePartners > svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .mobilePartners strong {
+      font-size: 18px;
+    }
+
+    .mobilePartners span {
+      font-size: 12px;
+    }
+
+    /*
+     * Les services restent lisibles, mais moins hauts.
+     */
+    .mobileServices {
+      gap: 7px;
+      padding: 13px 0;
+    }
+
+    .mobileServices > span {
+      min-height: 30px;
+      padding: 0 11px;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .mobileServices svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .mobileCardFooter {
+      gap: 12px;
+      padding-top: 14px;
+    }
+
+    .mobilePrice small {
+      margin-bottom: 4px;
+      font-size: 9px;
+    }
+
+    .mobilePrice strong {
+      font-size: 31px;
+    }
+
+    .mobileView {
+      min-height: 42px;
+      padding: 0 7px 0 14px;
+      gap: 10px;
+      font-size: 12px;
+    }
+
+    .mobileView span {
+      width: 30px;
+      height: 30px;
+    }
+
+    /*
+     * Les sections originales conservent leur identité,
+     * avec une respiration adaptée entre les groupes de cartes.
+     */
+    .mobileOriginalSection {
+      margin: 72px -18px;
+    }
+
+    .mobileOriginalSection > section {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .mobileMedia {
+      aspect-ratio: 1.28 / 1;
+    }
+
+    .mobileCardBody {
+      padding: 15px;
+    }
+
+    .mobileServices > span {
+      min-height: 28px;
+      padding-inline: 9px;
+      font-size: 10px;
+    }
+
+    .mobilePrice strong {
+      font-size: 29px;
+    }
+
+    .mobileView {
+      padding-left: 11px;
+      font-size: 11px;
+    }
+
+    .mobileOriginalSection {
+      margin-right: -14px;
+      margin-left: -14px;
+    }
+  }
+
+</style>

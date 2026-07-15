@@ -3,6 +3,7 @@ import MainLayout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import TrustStrip from "../components/TrustStrip.astro";
 import PopularDestinations from "../components/PopularDestinations.astro";
+import MobileDestinationsFlow from "../components/MobileDestinationsFlow.astro";
 import WhyPrivateTransfer from "../components/sections/WhyPrivateTransfer.astro";
 import HowItWorks from "../components/sections/HowItWorks.astro";
 ---
@@ -14,8 +15,143 @@ import HowItWorks from "../components/sections/HowItWorks.astro";
   <main>
     <Hero />
     <TrustStrip />
-    <PopularDestinations />
-    <WhyPrivateTransfer />
-    <HowItWorks />
+    <div class="homeFlow">
+      <div class="desktopDestinations">
+        <PopularDestinations />
+      </div>
+
+      <div class="sharedSection mobileConfidenceSection">
+        <WhyPrivateTransfer />
+      </div>
+
+      <MobileDestinationsFlow />
+
+      <div class="sharedSection mobileHowItWorksSection">
+        <HowItWorks />
+      </div>
+    </div>
   </main>
 </MainLayout>
+
+<script>
+  const homeFlow = document.querySelector<HTMLElement>(".homeFlow");
+  const destinationHeader = document.querySelector<HTMLElement>(
+    ".desktopDestinations .destinations > .sectionHeader",
+  );
+  const destinationCards = Array.from(
+    document.querySelectorAll<HTMLElement>(
+      ".desktopDestinations .destinationGrid > .destinationCard",
+    ),
+  );
+  const confidenceSection = document.querySelector<HTMLElement>(
+    ".mobileConfidenceSection",
+  );
+  const darkInterlude = document.querySelector<HTMLElement>(
+    ".mobileInterludeDark",
+  );
+  const howSection = document.querySelector<HTMLElement>(
+    ".mobileHowItWorksSection",
+  );
+  const finalCta = document.querySelector<HTMLElement>(".mobileFinalCta");
+
+  if (
+    homeFlow &&
+    destinationHeader &&
+    destinationCards.length === 20 &&
+    confidenceSection &&
+    darkInterlude &&
+    howSection &&
+    finalCta
+  ) {
+    const mobileOrder = [
+      destinationHeader,
+      ...destinationCards.slice(0, 8),
+      confidenceSection,
+      ...destinationCards.slice(8, 14),
+      darkInterlude,
+      howSection,
+      ...destinationCards.slice(14),
+      finalCta,
+    ];
+
+    const placements = mobileOrder.map((node) => {
+      const marker = document.createComment("mobile-home-position");
+      node.before(marker);
+      node.classList.add("mobileDomItem");
+      return { marker, node };
+    });
+
+    destinationCards[0]?.classList.add("mobileGroupStart");
+    destinationCards[8]?.classList.add("mobileGroupStart");
+    destinationCards[14]?.classList.add("mobileGroupStart");
+
+    const mobileQuery = window.matchMedia("(max-width: 620px)");
+
+    const arrangeHomepage = (isMobile: boolean) => {
+      homeFlow.classList.toggle("mobileDomOrdered", isMobile);
+
+      if (isMobile) {
+        homeFlow.append(...mobileOrder);
+        return;
+      }
+
+      placements.forEach(({ marker, node }) => marker.after(node));
+    };
+
+    arrangeHomepage(mobileQuery.matches);
+    mobileQuery.addEventListener("change", (event) =>
+      arrangeHomepage(event.matches),
+    );
+  }
+</script>
+
+<style>
+  @media (max-width: 620px) {
+    .homeFlow {
+      --mobile-space-xs: 8px;
+      --mobile-space-s: 12px;
+      --mobile-space-m: 20px;
+      --mobile-space-l: 24px;
+      --mobile-space-xl: 34px;
+      --mobile-space-section: 56px;
+
+      display: flex;
+      flex-direction: column;
+      padding: var(--mobile-space-section) var(--mobile-space-m);
+      overflow: clip;
+      background: #f5f7fa;
+    }
+
+    .desktopDestinations {
+      display: contents;
+    }
+
+    .sharedSection {
+      margin-right: calc(-1 * var(--mobile-space-m));
+      margin-left: calc(-1 * var(--mobile-space-m));
+    }
+
+    .mobileConfidenceSection {
+      order: 2;
+    }
+
+    .mobileHowItWorksSection {
+      order: 5;
+    }
+
+    .homeFlow.mobileDomOrdered > :global(.mobileDomItem) {
+      order: initial;
+    }
+
+    .homeFlow.mobileDomOrdered
+      > :global(.destinationCard.mobileGroupStart) {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .homeFlow {
+      --mobile-space-section: 48px;
+    }
+  }
+</style>

@@ -1,0 +1,37 @@
+---
+import MainLayout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import TrustStrip from "../components/TrustStrip.astro";
+import PopularDestinations from "../components/PopularDestinations.astro";
+import MobileDestinationsFlow from "../components/MobileDestinationsFlow.astro";
+import WhyPrivateTransfer from "../components/sections/WhyPrivateTransfer.astro";
+import HowItWorks from "../components/sections/HowItWorks.astro";
+---
+
+<MainLayout
+  title="HotelsTransfer | Compare Airport Transfers Worldwide"
+  description="Compare verified airport transfer companies, transparent prices and premium vehicles across leading destinations worldwide."
+>
+  <main>
+    <Hero />
+    <TrustStrip />
+    <div class="homeFlow">
+      <div class="desktopDestinations">
+        <PopularDestinations />
+      </div>
+
+      <MobileDestinationsFlow>
+        <WhyPrivateTransfer slot="confidence" />
+        <HowItWorks slot="how-it-works" />
+      </MobileDestinationsFlow>
+    </div>
+  </main>
+</MainLayout>
+
+<style>
+  @media (max-width: 768px) {
+    .desktopDestinations {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,139 @@
+<section class="mobileDestinationFlow" aria-label="Mobile editorial highlights">
+  <aside class="mobileInterlude mobileInterludeDark">
+    <p class="eyebrow">Confidence begins before landing</p>
+
+    <h2>Everything essential, arranged before arrival.</h2>
+
+    <p>
+      Know who is meeting you, understand what you will pay and choose the
+      vehicle that fits your journey.
+    </p>
+
+    <a href="/how-it-works">
+      How HotelsTransfer works
+      <span aria-hidden="true">→</span>
+    </a>
+  </aside>
+
+  <footer class="mobileFinalCta">
+    <p class="eyebrow">Ready when you are</p>
+    <h2>Find the right transfer for your next arrival.</h2>
+
+    <a href="#transfer-search">
+      Search transfers
+      <span aria-hidden="true">→</span>
+    </a>
+  </footer>
+</section>
+
+<style>
+  .mobileDestinationFlow {
+    display: contents;
+  }
+
+  .mobileInterlude,
+  .mobileFinalCta {
+    display: none;
+  }
+
+  @media (max-width: 620px) {
+    .mobileInterlude,
+    .mobileFinalCta {
+      width: 100%;
+      display: block;
+      box-sizing: border-box;
+      padding: var(--mobile-space-xl, 34px) var(--mobile-space-l, 24px);
+      border: 1px solid rgba(20, 42, 68, 0.1);
+      border-radius: 28px;
+      box-shadow: 0 18px 44px rgba(16, 29, 48, 0.07);
+    }
+
+    .eyebrow {
+      margin: 0 0 var(--mobile-space-s, 12px);
+      color: #1f5795;
+      font-size: 11px;
+      font-weight: 850;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: 820;
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+    }
+
+    .mobileInterludeDark {
+      order: 4;
+      margin-top: var(--mobile-space-section, 56px);
+      color: #fff;
+      background: #0f1d30;
+    }
+
+    .mobileInterludeDark h2 {
+      color: #fff;
+    }
+
+    .mobileInterludeDark .eyebrow {
+      color: #d3ad5c;
+    }
+
+    .mobileInterludeDark > p:not(.eyebrow) {
+      max-width: 90%;
+      margin: var(--mobile-space-l, 24px) 0;
+      color: #c5ceda;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .mobileInterludeDark a,
+    .mobileFinalCta a {
+      width: 100%;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--mobile-space-m, 20px);
+      box-sizing: border-box;
+      padding: 0 var(--mobile-space-xs, 8px) 0 var(--mobile-space-m, 20px);
+      color: #163c69;
+      border-radius: 999px;
+      background: #fff;
+      font-size: 14px;
+      font-weight: 850;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .mobileInterludeDark a span,
+    .mobileFinalCta a span {
+      flex: 0 0 auto;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      border-radius: 50%;
+      background: #17477d;
+    }
+
+    .mobileFinalCta {
+      order: 7;
+      margin-top: var(--mobile-space-section, 56px);
+      background: #eef3f8;
+    }
+
+    .mobileFinalCta h2 {
+      margin-bottom: var(--mobile-space-l, 24px);
+      color: #0e1728;
+    }
+  }
+
+  @media (max-width: 370px) {
+    .mobileInterludeDark {
+      padding: 28px var(--mobile-space-m, 20px);
+    }
+  }
+</style>
