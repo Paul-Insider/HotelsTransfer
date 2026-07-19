@@ -1,103 +1,370 @@
-<section class="trustStrip" aria-label="HotelsTransfer benefits">
-  <article>
-    <span class="marker" aria-hidden="true"></span>
-    <div>
-      <strong>Carefully selected</strong>
-      <p>Private Partners reviewed for service, reliability and presentation.</p>
-    </div>
-  </article>
+---
+const networkStatistics = [
+  {
+    value: "120+",
+    label: "Countries",
+    benefit: "Worldwide, locally delivered",
+    description:
+      "One consistent booking experience across leading destinations.",
+  },
+  {
+    value: "520+",
+    label: "Airport Gateways",
+    benefit: "Clear before you book",
+    description:
+      "Compare vehicles, inclusions and prices without hidden surprises.",
+  },
+  {
+    value: "5,000+",
+    label: "Verified Partners",
+    benefit: "Carefully selected",
+    description:
+      "Private Partners reviewed for service, reliability and presentation.",
+  },
+  {
+    value: "24/7",
+    label: "Availability",
+    benefit: "Built around arrivals",
+    description:
+      "Flight monitoring, waiting time and meet & greet where available.",
+  },
+];
+---
 
-  <article>
-    <span class="marker" aria-hidden="true"></span>
-    <div>
-      <strong>Clear before you book</strong>
-      <p>Compare vehicles, inclusions and prices without hidden surprises.</p>
-    </div>
-  </article>
+<section class="trustStrip" aria-label="HotelsTransfer global network">
+  {
+    networkStatistics.map((statistic) => (
+      <article>
+        <div class="metric">
+          <strong>{statistic.value}</strong>
+          <span>{statistic.label}</span>
+        </div>
 
-  <article>
-    <span class="marker" aria-hidden="true"></span>
-    <div>
-      <strong>Built around arrivals</strong>
-      <p>Flight monitoring, waiting time and meet &amp; greet where available.</p>
-    </div>
-  </article>
-
-  <article>
-    <span class="marker" aria-hidden="true"></span>
-    <div>
-      <strong>Worldwide, locally delivered</strong>
-      <p>One consistent booking experience across leading destinations.</p>
-    </div>
-  </article>
+        <div class="benefit">
+          <div class="benefitTitle">
+            <i aria-hidden="true"></i>
+            <h3>{statistic.benefit}</h3>
+          </div>
+          <p>{statistic.description}</p>
+        </div>
+      </article>
+    ))
+  }
 </section>
 
 <style>
   .trustStrip {
     position: relative;
     z-index: 4;
+    width: calc(100% - 40px);
+    height: 142px;
     max-width: 1240px;
-    margin: -30px auto 0;
-    padding: 26px 28px;
+    margin: -68px auto 0;
+    padding: 4px 26px 12px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 28px;
-    border: 1px solid rgba(24, 31, 40, 0.08);
-    border-radius: 24px;
+    border: 1px solid rgba(15, 29, 48, 0.05);
+    border-radius: 20px;
     background: #fff;
-    box-shadow:
-      0 28px 70px rgba(20, 27, 36, 0.08),
-      0 4px 16px rgba(20, 27, 36, 0.035);
+    box-shadow: 0 18px 50px rgba(15, 29, 48, 0.08);
   }
 
   article {
     min-width: 0;
+    padding: 0 16px;
     display: flex;
-    gap: 14px;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
-  .marker {
-    flex: 0 0 auto;
-    width: 7px;
-    height: 7px;
-    margin-top: 5px;
+  article + article {
+    border-left: 1px solid rgba(15, 29, 48, 0.07);
+  }
+
+  .metric strong,
+  .metric span {
+    display: block;
+  }
+
+  .metric {
+    width: 100%;
+    text-align: center;
+  }
+
+  .metric strong {
+    color: #172333;
+    font-size: clamp(36px, 3vw, 42px);
+    font-weight: 650;
+    line-height: 1;
+    letter-spacing: -0.045em;
+    white-space: nowrap;
+  }
+
+  .metric span {
+    margin-top: 6px;
+    color: #748092;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: 0.035em;
+  }
+
+  .benefit {
+    width: 100%;
+    max-width: 230px;
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  .benefitTitle {
+    width: 100%;
+    min-height: 34px;
+    display: grid;
+    grid-template-columns: 14px minmax(0, 1fr) 14px;
+    align-items: start;
+  }
+
+  .benefitTitle::after {
+    content: "";
+    width: 14px;
+  }
+
+  .benefit i {
+    width: 5px;
+    height: 5px;
+    margin-top: 6px;
+    justify-self: center;
     border-radius: 50%;
     background: #c8a660;
-    box-shadow: 0 0 0 5px rgba(200, 166, 96, 0.1);
+    box-shadow: 0 0 0 4px rgba(200, 166, 96, 0.1);
   }
 
-  strong {
-    display: block;
-    margin-bottom: 7px;
-    color: #20252a;
-    font-size: 13px;
-    font-weight: 780;
-    letter-spacing: -0.012em;
-  }
-
-  p {
+  .benefit h3 {
     margin: 0;
-    color: #687079;
-    font-size: 11px;
-    line-height: 1.58;
+    text-align: center;
+    color: #172333;
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  .benefit p {
+    width: 100%;
+    margin: 4px 0 0;
+    text-align: center;
+    color: #748092;
+    font-size: 11.5px;
+    line-height: 1.38;
+    overflow-wrap: anywhere;
+  }
+
+  @media (min-width: 621px) {
+    .benefit {
+      transform: translateY(-5px);
+    }
+  }
+
+  @media (min-width: 981px) {
+    .benefit {
+      margin-top: 2px;
+    }
+
+    .benefit p {
+      position: relative;
+      top: -4px;
+    }
   }
 
   @media (max-width: 980px) {
     .trustStrip {
-      margin-inline: 20px;
-      padding: 26px;
+      height: auto;
+      padding: 20px 24px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 26px 34px;
+      grid-auto-rows: 1fr;
+    }
+
+    article {
+      min-height: 170px;
+      padding: 18px 22px;
+    }
+
+    article:nth-child(odd) {
+      border-left: 0;
+    }
+
+    article:nth-child(n + 3) {
+      border-top: 1px solid rgba(15, 29, 48, 0.07);
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 620px) {
     .trustStrip {
-      margin: -22px 14px 0;
-      padding: 24px 22px;
-      grid-template-columns: 1fr;
-      gap: 22px;
+      --mobile-grid-inset: 22px;
+
+      width: calc(100% - 28px);
+      margin: -28px 14px 0;
+      padding: var(--mobile-grid-inset);
+      border-radius: 22px;
+      box-shadow: 0 14px 38px rgba(15, 29, 48, 0.07);
+    }
+
+    .trustStrip::before,
+    .trustStrip::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+      background: rgba(15, 29, 48, 0.07);
+    }
+
+    .trustStrip::before {
+      top: var(--mobile-grid-inset);
+      bottom: var(--mobile-grid-inset);
+      left: 50%;
+      width: 1px;
+      transform: translateX(-0.5px);
+    }
+
+    .trustStrip::after {
+      top: 50%;
+      right: var(--mobile-grid-inset);
+      left: var(--mobile-grid-inset);
+      height: 1px;
+      transform: translateY(-0.5px);
+    }
+
+    .trustStrip > article {
+      z-index: 2;
+      min-height: 169px;
+      padding: 3px 10px 8px;
+      border: 0;
+    }
+
+    .trustStrip > article:nth-child(n + 3) {
+      transform: translateY(12px);
+    }
+
+    .metric strong {
+      font-size: clamp(28px, 8vw, 34px);
+    }
+
+    .metric span {
+      min-height: 0;
+      margin-top: 5px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      font-size: 10.5px;
+      letter-spacing: 0.02em;
+    }
+
+    .benefit {
+      margin-top: 14px;
+    }
+
+    .benefitTitle {
+      min-height: 33px;
+    }
+
+    .benefit h3 {
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .benefit p {
+      margin-top: 8px;
+      font-size: 10.5px;
+      line-height: 1.4;
     }
   }
+
+  @media (max-width: 370px) {
+    .trustStrip {
+      --mobile-grid-inset: 18px;
+    }
+
+    .trustStrip > article {
+      padding: 3px 8px 8px;
+    }
+
+    .metric strong {
+      font-size: 28px;
+    }
+
+    .metric span {
+      font-size: 10px;
+      white-space: normal;
+    }
+
+    .benefit h3 {
+      font-size: 11.5px;
+    }
+
+    .benefit p {
+      font-size: 10px;
+    }
+  }
+
+  @media (min-width: 981px) {
+  .trustStrip > article > .benefit {
+    margin-top: 12px;
+  }
+
+  .trustStrip > article > .benefit > .benefitTitle {
+    min-height: 32px;
+  }
+
+  .trustStrip > article > .benefit > p {
+    position: relative;
+    top: -10px;
+  }
+}
+
+/* Final mobile service layout */
+@media (max-width: 620px) {
+  .serviceList {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: auto auto;
+    gap: 8px;
+    align-items: center;
+    justify-content: start;
+  }
+
+  /* Professional drivers */
+  .servicePill:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  /* Flight monitored */
+  .servicePill:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* Meet & greet */
+  .servicePill:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  /* Fixed pricing */
+  .servicePill:nth-child(4) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .servicePill {
+    width: fit-content;
+    max-width: 100%;
+    justify-self: start;
+    align-self: center;
+    white-space: nowrap;
+  }
+}
+
 </style>

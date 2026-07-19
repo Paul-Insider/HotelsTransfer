@@ -5,6 +5,7 @@ import TrustStrip from "../components/TrustStrip.astro";
 import PopularDestinations from "../components/PopularDestinations.astro";
 import MobileDestinationsFlow from "../components/MobileDestinationsFlow.astro";
 import WhyPrivateTransfer from "../components/sections/WhyPrivateTransfer.astro";
+import FoundingPartnerCTA from "../components/sections/FoundingPartnerCTA.astro";
 import HowItWorks from "../components/sections/HowItWorks.astro";
 ---
 
@@ -25,6 +26,8 @@ import HowItWorks from "../components/sections/HowItWorks.astro";
       </div>
 
       <MobileDestinationsFlow />
+
+      <FoundingPartnerCTA />
 
       <div class="sharedSection mobileHowItWorksSection">
         <HowItWorks />
@@ -49,6 +52,9 @@ import HowItWorks from "../components/sections/HowItWorks.astro";
   const darkInterlude = document.querySelector<HTMLElement>(
     ".mobileInterludeDark",
   );
+  const foundingPartner = document.querySelector<HTMLElement>(
+    ".foundingPartner",
+  );
   const howSection = document.querySelector<HTMLElement>(
     ".mobileHowItWorksSection",
   );
@@ -60,6 +66,7 @@ import HowItWorks from "../components/sections/HowItWorks.astro";
     destinationCards.length === 20 &&
     confidenceSection &&
     darkInterlude &&
+    foundingPartner &&
     howSection &&
     finalCta
   ) {
@@ -69,6 +76,7 @@ import HowItWorks from "../components/sections/HowItWorks.astro";
       confidenceSection,
       ...destinationCards.slice(8, 14),
       darkInterlude,
+      foundingPartner,
       howSection,
       ...destinationCards.slice(14),
       finalCta,
@@ -136,7 +144,7 @@ import HowItWorks from "../components/sections/HowItWorks.astro";
     }
 
     .mobileHowItWorksSection {
-      order: 5;
+      order: 6;
     }
 
     .homeFlow.mobileDomOrdered > :global(.mobileDomItem) {
