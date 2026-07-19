@@ -28,3 +28,6 @@ pnpm-debug.log*
 *.backup-*
 *.backup-before-*
 *.before-*.astro.bak
+
+.backups/
+backups/
